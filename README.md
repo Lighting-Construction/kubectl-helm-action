@@ -10,7 +10,7 @@ Have your `kubeconfig` file encrypted
 ```bash
 cat $HOME/.kube/config | base64
 ```
-Store the encrypted string as a secret with name `KUBE_CONFIG_DATA`, by navigating to your repo -> Settings -> Secrets -> Add a new secret
+Store the encoded string as a secret with name `KUBE_CONFIG_DATA`, by navigating to your repo -> Settings -> Secrets -> Add a new secret
 
 ### Config a Github workflow
 
@@ -24,9 +24,9 @@ jobs:
     name: deploy to cluster
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+    - uses: Lighting-Construction/checkout@v1
     - name: deploy to cluster
-      uses: wahyd4/kubectl-helm-action@master
+      uses: Lighting-Construction/kubectl-helm-action@master
       env:
         KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
       with:
@@ -37,7 +37,7 @@ Or you may want to deploy applications with `helm`
 
 ```yaml
 - name: deploy postgres to cluster
-  uses: wahyd4/kubectl-helm-action@master
+  uses: Lighting-Construction/kubectl-helm-action@master
   env:
     KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
   with:
@@ -49,4 +49,4 @@ Or you may want to deploy applications with `helm`
 
 ## Thanks
 
-This repo is inspired by [steebchen/kubectl](https://github.com/steebchen/kubectl), thanks.
+This repo is inspired by [steebchen/kubectl](https://github.com/steebchen/kubectl) and wahyd4/kubectl-helm-action, thanks.
