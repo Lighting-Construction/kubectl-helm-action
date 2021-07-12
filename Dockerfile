@@ -20,7 +20,8 @@ RUN apk add --no-cache ca-certificates bash git openssh curl gettext jq bind-too
     && chmod g+rwx /root \
     && mkdir /config \
     && chmod g+rwx /config
-#    && helm repo add "stable" "https://charts.helm.sh/stable" --force-update
+    && helm repo add "stable" "https://charts.helm.sh/stable" --force-update \
+    && helm repo add "bitnami" "https://charts.bitnami.com/bitnami" --force-update
 
 WORKDIR /config
 
